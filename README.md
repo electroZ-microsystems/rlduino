@@ -1,4 +1,8 @@
 # rlduino
-readline library for arduino
+Serial terminal library for arduino
 
-see also: https://github.com/Helius/microrl
+
+
+This project is based on https://github.com/Helius/microrl
+
+See also alternative solution: https://github.com/SMFSW/SerialTerminal
