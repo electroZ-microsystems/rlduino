@@ -15,7 +15,7 @@ void setup()
    Serial.print ("\n________________ microrl for Arduino _______________\n");
    
    
-   microrl_init (&rl);
+   microrl_init (&rl,Serial);
    microrl_set_execute_callback (&rl, command);
 }
 

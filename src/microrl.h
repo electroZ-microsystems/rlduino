@@ -91,7 +91,7 @@ typedef struct {
 
 // init internal data, calls once at start up
 //void microrl_init (microrl_t * pThis, void (*print)(const char*));
-void microrl_init (microrl_t * pThis);
+void microrl_init (microrl_t * pThis, Stream &serial);
 
 //Need to be inserted in the main loop
 void microrl_run(microrl_t * pThis);

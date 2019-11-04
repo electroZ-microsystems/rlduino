@@ -18,6 +18,8 @@ BUGS and TODO:
 char * prompt_default = _PROMPT_DEFAULT;
 char human = 1;
 
+Stream* serial; 
+
 void microrl_set_human(unsigned char h)
 {
    human = h;  
@@ -32,9 +34,9 @@ void microrl_set_human(unsigned char h)
 
 void microrl_run(microrl_t * pThis)
 {
-   if (Serial.available())
+   if (serial->available())
    { 
-      microrl_insert_char (pThis, Serial.read());
+      microrl_insert_char (pThis, serial->read());
    }
 }
 
@@ -46,7 +48,7 @@ unsigned char microrl_get_human(void)
 //user by microrl
 void print (const char * str)
 {
-  Serial.print(str);
+  serial->print(str);
 }
 
 #ifdef _USE_HISTORY
@@ -352,8 +354,9 @@ static void terminal_print_line (microrl_t * pThis, int pos, int cursor)
 
 //*****************************************************************************
 //void microrl_init (microrl_t * pThis, void (*print) (const char *)) 
-void microrl_init (microrl_t * pThis) 
+void microrl_init (microrl_t * pThis, Stream& _serial) 
 {
+   serial = &_serial;
 	memset(pThis->cmdline, 0, _COMMAND_LINE_LEN);
 #ifdef _USE_HISTORY
 	memset(pThis->ring_hist.ring_buf, 0, _RING_HISTORY_LEN);
